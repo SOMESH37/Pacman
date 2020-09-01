@@ -1,4 +1,44 @@
 *{
-    scroll-behavior:smooth;
+    overflow:hidden;
     box-sizing:border-box;
+    padding:0;
+    border:0;
+    background-color:black;
+}
+h3{
+	text-align:center;
+	margin-top:8px;
+	color:white;
+}
+.grid {
+	margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 560px;
+    height: 560px;
+}
+  
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.food {
+   background:url(resources/food.png);
+  background-size:100%;
+}
+
+.wall {
+    background:url(resources/wall.jpeg) ;
+    background-size:95%;
+}
+
+.pill {
+    background:url(resources/pill.gif);
+    background-size:110%;
+}
+
+.pac {
+    background:url(resources/pac.gif);
+    background-size:95%;
 }
