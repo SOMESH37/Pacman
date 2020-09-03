@@ -42,3 +42,28 @@ h3{
     background:url(resources/pac.gif);
     background-size:95%;
 }
+
+.g1 {
+    background:url(resources/g1.png);
+    background-size:95%;
+}
+
+.g2 {
+    background:url(resources/g2.png);
+    background-size:95%;
+}
+
+.g3 {
+    background:url(resources/g3.png);
+    background-size:95%;
+}
+
+.g4 {
+    background:url(resources/g4.png);
+    background-size:95%;
+}
+
+.scared-ghost {
+    background:url(resources/gr.png);
+    background-size:95%;
+}
