@@ -1,4 +1,4 @@
-let layout = [
+const layout = [
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
     1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -35,14 +35,14 @@ let layout = [
 // 5 - pacman
 ]
 //create board
-let squares = [];
-setInterval(createBoard, 0);
+const squares = []
+for (let i = 0; i < layout.length; i++) {
+      const square = document.createElement('div');
+      document.querySelector('.grid').appendChild(square);
+      squares.push(square);}
+let CB = setInterval(createBoard, 0);
 function createBoard() {
     for (let i = 0; i < layout.length; i++) {
-      let square = document.createElement('div');
-      document.querySelector('.grid').appendChild(square);
-      squares.push(square);
-
       if(layout[i] === 0) {
         squares[i].classList.add('food');
       } else if (layout[i] === 1) {
@@ -52,7 +52,44 @@ function createBoard() {
       } else if (layout[i] === 5 ) {
         squares[i].classList.add('pac');
       }
+    }	clearInterval(CB);
+}
+//ghosts
+class ghost {
+    constructor(name, start, speed) {
+      this.name = name;
+      this.start = start;
+      this.speed = speed;
+      this.current = start;
+      this.scared = false;
+      this.ID ;
     }
 }
 
+ghosts = [
+    new ghost('g1', 321, 250),
+    new ghost('g2', 349, 350),
+    new ghost('g3', 322, 300),
+    new ghost('g4', 350, 200)
+]
 
+const moves =  [-1, +1, 28, -28]
+
+//ghosts on the board
+ghosts.forEach(ghost => {squares[ghost.current].classList.add(ghost.name,'ghost')});
+ghosts.forEach(ghost => {moveGhost(ghost)});
+
+function moveGhost(ghost) {
+    let nextmove = moves[Math.floor(Math.random() * moves.length)];
+
+    ghost.ID = setInterval(function() {
+      if  (!squares[ghost.current + nextmove].classList.contains('ghost') 
+           && !squares[ghost.current + nextmove].classList.contains('wall') ) {
+          //transfer the ghost
+          squares[ghost.current].classList.remove(ghost.name, 'ghost');
+          ghost.current += nextmove;
+          squares[ghost.current].classList.add(ghost.name, 'ghost');
+      
+      } else nextmove = moves[Math.floor(Math.random() * moves.length)];
+    }, ghost.speed);
+}
