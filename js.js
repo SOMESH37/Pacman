@@ -37,7 +37,9 @@ const layout = [
 //create board
 const squares = []
 let pacCurrent;
+
 let score = 0;
+
 for (let i = 0; i < layout.length; i++) {
       const square = document.createElement('div');
       document.querySelector('.grid').appendChild(square);
@@ -204,4 +206,3 @@ function checkForWin() {
       document.getElementById('something').classList.add('win'); 
     }
 }
-
