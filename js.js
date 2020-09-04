@@ -37,6 +37,9 @@ const layout = [
 //create board
 const squares = []
 let pacCurrent;
+
+let score = 0;
+
 for (let i = 0; i < layout.length; i++) {
       const square = document.createElement('div');
       document.querySelector('.grid').appendChild(square);
@@ -48,6 +51,8 @@ function createBoard() {
         squares[i].classList.add('food');
       } else if (layout[i] === 1) {
         squares[i].classList.add('wall');
+      } else if (layout[i] === 2) {
+        squares[i].classList.add('ghost');
       } else if (layout[i] === 3) {
         squares[i].classList.add('pill');
       } else if (layout[i] === 5 ) {
@@ -100,12 +105,14 @@ function moveGhost(ghost) {
 
       //if the ghost is currently scared and pacman hits him
       if(ghost.scared && squares[ghost.current].classList.contains('pac')) {
-        squares[ghost.current].classList.remove(ghost.className, 'ghost', 'scared-ghost');
+        squares[ghost.current].classList.remove(ghost.name, 'ghost', 'scared-ghost');
         ghost.current = ghost.start;
-        score +=100;
-        squares[ghost.current].classList.add(ghost.className, 'ghost');
+        score +=50;
+        document.getElementById('score').innerHTML = score;
+        squares[ghost.current].classList.add('ghost');
       }
-   
+    checkForGameOver();
+    checkForWin();
     }, ghost.speed);
 }
 //movement of pacman
@@ -162,3 +169,40 @@ function movePacman(e) {
     checkForWin();
   }
 document.addEventListener('keyup', movePacman);
+
+//eat a food
+function foodEaten() {
+    if (squares[pacCurrent].classList.contains('food')) {
+      score++;
+      document.getElementById('score').innerHTML = score;
+      squares[pacCurrent].classList.remove('food');
+    }
+}
+
+//eat a pill
+function pillEaten() {
+    if (squares[pacCurrent].classList.contains('pill')) {
+      score +=10;
+      document.getElementById('score').innerHTML = score;
+      ghosts.forEach(ghost => ghost.scared = true);
+      setTimeout( function() { ghosts.forEach(ghost => ghost.scared = false); }, 10000);
+      squares[pacCurrent].classList.remove('pill');
+    }
+}
+
+function checkForGameOver() {
+    if (squares[pacCurrent].classList.contains('ghost') &&
+      !squares[pacCurrent].classList.contains('scared-ghost')) {
+      document.removeEventListener('keyup', movePacman);
+      ghosts.forEach(ghost => clearInterval(ghost.ID));
+      document.getElementById('something').classList.add('gameover');
+    }
+}
+
+function checkForWin() {
+    if (score >= 500) {
+	  ghosts.forEach(ghost => clearInterval(ghost.ID));
+      document.removeEventListener('keyup', movePacman);
+      document.getElementById('something').classList.add('win'); 
+    }
+}
