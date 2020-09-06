@@ -279,7 +279,7 @@ function levelup(){
     wallnum = Math.floor(Math.random() * 3);
 	walltype = "wall" + wallnum;
     layoutnum++;
-	if(layoutnum == 3) layoutnum = 0;
+	if(layoutnum == 2) layoutnum = 0;
 	createBoard(layoutnum);
 	ghosts.forEach(ghost => {squares[ghost.start].classList.add(ghost.name,'ghost'); });
 	ghosts.forEach(ghost => {moveGhost(ghost)});
