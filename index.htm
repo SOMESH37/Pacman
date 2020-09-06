@@ -13,7 +13,14 @@
 <body>
 	<div id="something"></div>
 	<div class="grid"></div>
-    <h3>Score: <span id="score">0</span>/500</h3>
+	<footer>
+	<button id="b1" onmouseover="over1(this)" onmouseout="level(this)" onclick="newgame(this)">
+	Level: 1</button>
+	<div id ="point">
+    Score: <span id="score">0</span>/500</div>
+    <button id="b2" onmouseover="over2(this)" onmouseout="life(this)" onclick="pause(this)">
+	Life: 3</button>
+	</footer>
 </body>
 <script type="text/javascript" src="js.js" ></script>
 </html>

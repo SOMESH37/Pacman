@@ -1,5 +1,5 @@
 const layout = [
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+   [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
     1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
     1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
@@ -12,7 +12,7 @@ const layout = [
     1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,4,1,4,1,2,2,1,4,1,4,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,4,1,4,1,2,2,1,4,1,4,1,1,0,1,1,1,1,1,1,
-    4,0,0,0,0,0,0,0,0,0,1,4,1,1,1,1,4,1,0,0,0,0,0,0,0,0,0,4,
+    0,0,0,0,0,0,0,0,0,0,1,4,1,1,1,1,4,1,0,0,0,0,0,0,0,0,0,0,
     1,1,1,1,1,1,0,1,1,0,1,4,4,0,0,4,4,1,0,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,0,1,4,1,1,1,1,4,1,0,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,0,1,4,4,4,4,4,4,1,0,1,1,0,1,1,1,1,1,1,
@@ -26,7 +26,65 @@ const layout = [
     1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
     1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
     1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    
+   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,4,1,2,2,1,4,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,4,1,2,2,1,4,1,4,1,1,0,1,1,1,1,1,1,
+    0,0,0,0,0,0,0,0,0,0,1,4,1,1,1,1,4,1,0,0,0,0,0,0,0,0,0,0,
+    1,1,1,1,1,1,0,1,1,0,1,4,4,0,0,4,4,1,0,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,0,1,4,1,1,1,1,4,1,0,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,0,1,4,4,4,4,4,4,1,0,1,1,0,1,1,1,1,1,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1,
+    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
+    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
+    1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
+    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,4,1,2,2,1,4,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,4,1,2,2,1,4,1,4,1,1,0,1,1,1,1,1,1,
+    0,0,0,0,0,0,0,0,0,0,1,4,1,1,1,1,4,1,0,0,0,0,0,0,0,0,0,0,
+    1,1,1,1,1,1,0,1,1,0,1,4,4,0,0,4,4,1,0,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,0,1,4,1,1,1,1,4,1,0,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,0,1,4,4,4,4,4,4,1,0,1,1,0,1,1,1,1,1,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+    1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1,
+    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
+    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
+    1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,
+    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
+    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
+    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 // 0 - food
 // 1 - wall
 // 2 - ghosts
@@ -37,27 +95,42 @@ const layout = [
 //create board
 const squares = []
 let pacCurrent;
+let pacStart;
+let levelCurrent = 1;
 let score = 0;
-for (let i = 0; i < layout.length; i++) {
+let lives = 3;
+let game = true;
+let flag = 0;
+let layoutnum = Math.floor(Math.random() * 3);
+let wallnum = Math.floor(Math.random() * 3);
+let walltype = "wall" + wallnum;
+
+for (let i = 0; i < 784; i++) {
       const square = document.createElement('div');
       document.querySelector('.grid').appendChild(square);
       squares.push(square);}
-let CB = setInterval(createBoard, 0);
-function createBoard() {
-    for (let i = 0; i < layout.length; i++) {
-      if(layout[i] === 0) {
+      
+createBoard(layoutnum);
+function createBoard(layoutnum) {
+    for (let i = 0; i < 784; i++) {
+      if(layout[layoutnum][i] == 0) {
         squares[i].classList.add('food');
-      } else if (layout[i] === 1) {
-        squares[i].classList.add('wall');
-      } else if (layout[i] === 2) {
+      } else if (layout[layoutnum][i] == 1) {
+        squares[i].classList.add(walltype);
+      } else if (layout[layoutnum][i] == 2) {
         squares[i].classList.add('ghost');
-      } else if (layout[i] === 3) {
+      } else if (layout[layoutnum][i] == 3) {
         squares[i].classList.add('pill');
-      } else if (layout[i] === 5 ) {
+      } else if (layout[layoutnum][i] == 5 ) {
         squares[i].classList.add('pac');
-        pacCurrent=i;
+        pacStart=i;
       }
-    }	clearInterval(CB);
+    }	
+}
+function removeBoard() {
+    for (let i = 0; i < 784; i++) {
+        squares[i].classList.remove('food', walltype, 'ghost', 'pill', 'pac');
+        }	
 }
 //ghosts
 class ghost {
@@ -72,16 +145,16 @@ class ghost {
 }
 
 ghosts = [
-    new ghost('g1', 321, 250),
-    new ghost('g2', 349, 350),
-    new ghost('g3', 322, 300),
-    new ghost('g4', 350, 200)
+    new ghost('g1', 321, 125),
+    new ghost('g2', 349, 150),
+    new ghost('g3', 322, 175),
+    new ghost('g4', 350, 100)
 ]
 
 const moves =  [-1, +1, 28, -28]
 
 //ghosts on the board
-ghosts.forEach(ghost => {squares[ghost.current].classList.add(ghost.name,'ghost')});
+ghosts.forEach(ghost => {squares[ghost.start].classList.add(ghost.name,'ghost')});
 ghosts.forEach(ghost => {moveGhost(ghost)});
 
 function moveGhost(ghost) {
@@ -89,7 +162,7 @@ function moveGhost(ghost) {
 
     ghost.ID = setInterval(function() {
       if  (!squares[ghost.current + nextmove].classList.contains('ghost') 
-           && !squares[ghost.current + nextmove].classList.contains('wall') ) {
+           && !squares[ghost.current + nextmove].classList.contains(walltype) ) {
           //transfer the ghost
           squares[ghost.current].classList.remove(ghost.name, 'ghost', 'scared-ghost');
           ghost.current += nextmove;
@@ -105,7 +178,8 @@ function moveGhost(ghost) {
       if(ghost.scared && squares[ghost.current].classList.contains('pac')) {
         squares[ghost.current].classList.remove(ghost.name, 'ghost', 'scared-ghost');
         ghost.current = ghost.start;
-        score +=50;
+        if (levelCurrent <= 2) score += 50;
+        score += 50;
         document.getElementById('score').innerHTML = score;
         squares[ghost.current].classList.add('ghost');
       }
@@ -114,46 +188,38 @@ function moveGhost(ghost) {
     }, ghost.speed);
 }
 //movement of pacman
+pacCurrent = pacStart;
+document.addEventListener('keydown', movePacman);
 function movePacman(e) {
     squares[pacCurrent].classList.remove('pac');
     switch(e.keyCode) {
       case 37:
+        if (squares[pacCurrent -1] === squares[363]) {pacCurrent = 391; break;}
         if(
           pacCurrent % 28 !== 0 &&
-          !squares[pacCurrent -1].classList.contains('wall') &&
+          !squares[pacCurrent -1].classList.contains(walltype) &&
           !squares[pacCurrent -1].classList.contains('ghost')
-          ){
-        pacCurrent -= 1;
-          }
-        if (squares[pacCurrent-1] === squares[363]) {
-          pacCurrent = 391;
-        }
-        break;
+          ) pacCurrent -= 1; break;
       case 38:
         if(
           pacCurrent - 28 >= 0 &&
-          !squares[pacCurrent -28].classList.contains('wall') &&
+          !squares[pacCurrent -28].classList.contains(walltype) &&
           !squares[pacCurrent -28].classList.contains('ghost')
           ) {
              pacCurrent -= 28;
             }
         break;
       case 39:
+        if (squares[pacCurrent +1] === squares[392]) {pacCurrent = 364; break;}
         if(
           pacCurrent % 28 < 28 - 1 &&
-          !squares[pacCurrent +1].classList.contains('wall') &&
+          !squares[pacCurrent +1].classList.contains(walltype) &&
           !squares[pacCurrent +1].classList.contains('ghost')
-        ){
-        pacCurrent += 1;         
-           }
-        if (squares[pacCurrent +1] === squares[392]) {
-          pacCurrent = 364;
-        }
-        break;
+        ) pacCurrent += 1; break;
       case 40:
         if (
           pacCurrent + 28 < (28 * 28) &&
-          !squares[pacCurrent +28].classList.contains('wall') &&
+          !squares[pacCurrent +28].classList.contains(walltype) &&
           !squares[pacCurrent +28].classList.contains('ghost')
         ){
         pacCurrent += 28;
@@ -166,11 +232,11 @@ function movePacman(e) {
     checkForGameOver();
     checkForWin();
   }
-document.addEventListener('keyup', movePacman);
 
 //eat a food
 function foodEaten() {
     if (squares[pacCurrent].classList.contains('food')) {
+	  if (levelCurrent <= 1) score++;
       score++;
       document.getElementById('score').innerHTML = score;
       squares[pacCurrent].classList.remove('food');
@@ -183,7 +249,8 @@ function pillEaten() {
       score +=10;
       document.getElementById('score').innerHTML = score;
       ghosts.forEach(ghost => ghost.scared = true);
-      setTimeout( function() { ghosts.forEach(ghost => ghost.scared = false); }, 10000);
+      setTimeout( function() { ghosts.forEach(ghost => ghost.scared = false); flag = 0; }, 10000);
+      flag = 1;
       squares[pacCurrent].classList.remove('pill');
     }
 }
@@ -191,17 +258,84 @@ function pillEaten() {
 function checkForGameOver() {
     if (squares[pacCurrent].classList.contains('ghost') &&
       !squares[pacCurrent].classList.contains('scared-ghost')) {
-      document.removeEventListener('keyup', movePacman);
+      if (lives == 0){
+      document.removeEventListener('keydown', movePacman);
       ghosts.forEach(ghost => clearInterval(ghost.ID));
       document.getElementById('something').classList.add('gameover');
+      flag = 1;
+	  }
+      else {
+		 lives--;
+		 squares[pacCurrent].classList.remove('pac');	 
+		 ghosts.forEach(ghost => {
+			 squares[ghost.current].classList.remove(ghost.name, 'ghost', 'scared-ghost');
+			 ghost.current = ghost.start;
+			 squares[ghost.current].classList.add(ghost.name,'ghost')});
+		 document.getElementById('b2').innerHTML = "Life: " + lives;
+		 pacCurrent = pacStart; 
+		 squares[pacCurrent].classList.add('pac');	 
+	  }
     }
 }
 
 function checkForWin() {
     if (score >= 500) {
 	  ghosts.forEach(ghost => clearInterval(ghost.ID));
-      document.removeEventListener('keyup', movePacman);
+      document.removeEventListener('keydown', movePacman);
       document.getElementById('something').classList.add('win'); 
+      setTimeout( levelup , 3000 );
+      flag = 1;
     }
 }
 
+function levelup(){
+	flag = 0;
+	levelCurrent++;
+	document.getElementById('b1').innerHTML = "Level: " + levelCurrent;
+	document.getElementById('something').classList.remove('win'); 
+	score = 0;
+	ghosts.forEach(ghost => {
+			 squares[ghost.current].classList.remove(ghost.name, 'ghost', 'scared-ghost');
+			 ghost.scared = false;
+			 ghost.current = ghost.start; });
+    removeBoard();
+    wallnum = Math.floor(Math.random() * 3);
+	walltype = "wall" + wallnum;
+    layoutnum++;
+	if(layoutnum == 3) layoutnum = 0;
+	createBoard(layoutnum);
+	ghosts.forEach(ghost => {squares[ghost.start].classList.add(ghost.name,'ghost'); });
+	ghosts.forEach(ghost => {moveGhost(ghost)});
+	document.addEventListener('keydown', movePacman);
+	pacCurrent = pacStart;
+}
+function over1(o){
+	o.innerHTML = "New Game";
+}
+function over2(o){
+	if(game == true && flag == 0) o.innerHTML = "Pause";
+	if(game == false && flag == 0) o.innerHTML = "Continue";
+}
+function level(o){
+	o.innerHTML = "Level: " + levelCurrent;
+}
+function life(o){
+	o.innerHTML = "Life: " + lives;
+}
+function newgame(o){
+	location.reload();
+}
+function pause(o){
+    if(game == true && flag == 0){
+	  document.removeEventListener('keydown', movePacman);
+      ghosts.forEach(ghost => clearInterval(ghost.ID));
+      o.innerHTML = "Continue";
+      document.getElementById('something').classList.add('gamepaused'); 
+      game = false;}
+    else if(game == false && flag == 0){
+	  document.addEventListener('keydown', movePacman);
+      ghosts.forEach(ghost => {moveGhost(ghost)});
+      o.innerHTML = "Pause";
+      document.getElementById('something').classList.remove('gamepaused'); 
+      game = true;}
+}
