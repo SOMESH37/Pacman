@@ -72,8 +72,8 @@ let score = 0;
 let lives = 3;
 let game = true;
 let flag = 0;
-let layoutnum = Math.floor(Math.random() * 3);
-let wallnum = Math.floor(Math.random() * 2);
+let layoutnum = Math.floor(Math.random() * 2);
+let wallnum = Math.floor(Math.random() * 3);
 let walltype = "wall" + wallnum;
 
 for (let i = 0; i < 784; i++) {
