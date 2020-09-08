@@ -72,10 +72,38 @@ let score = 0;
 let lives = 3;
 let game = true;
 let flag = 0;
-let layoutnum = Math.floor(Math.random() * 3);
-let wallnum = Math.floor(Math.random() * 2);
+let foodCount = 0;
+let time = 0;
+let layoutnum = Math.floor(Math.random() * 2);
+let wallnum = Math.floor(Math.random() * 3);
 let walltype = "wall" + wallnum;
 
+let images = new Array();
+function preload() {
+	for (i = 0; i < preload.arguments.length; i++) {
+		images[i] = new Image();
+		images[i].src = preload.arguments[i];
+		}
+}
+preload(
+		"https://somesh37.github.io/Pacman/resources/bg2.png",
+		"https://somesh37.github.io/Pacman/resources/food.png",
+		"https://somesh37.github.io/Pacman/resources/g1.png",
+		"https://somesh37.github.io/Pacman/resources/g2.png",
+		"https://somesh37.github.io/Pacman/resources/g3.png",
+		"https://somesh37.github.io/Pacman/resources/g4.png",
+		"https://somesh37.github.io/Pacman/resources/gameover.png",
+		"https://somesh37.github.io/Pacman/resources/gamepaused.png",
+		"https://somesh37.github.io/Pacman/resources/gr.png",
+		"https://somesh37.github.io/Pacman/resources/pac.gif",
+		"https://somesh37.github.io/Pacman/resources/pac.png",
+		"https://somesh37.github.io/Pacman/resources/pill.gif",
+		"https://somesh37.github.io/Pacman/resources/wall.jpeg",
+		"https://somesh37.github.io/Pacman/resources/wall1.jpeg",
+		"https://somesh37.github.io/Pacman/resources/wall2.jpeg",
+		"https://somesh37.github.io/Pacman/resources/win.png"
+)
+		
 for (let i = 0; i < 784; i++) {
       const square = document.createElement('div');
       document.querySelector('.grid').appendChild(square);
@@ -86,12 +114,14 @@ function createBoard(layoutnum) {
     for (let i = 0; i < 784; i++) {
       if(layout[layoutnum][i] == 0) {
         squares[i].classList.add('food');
+        foodCount++;
       } else if (layout[layoutnum][i] == 1) {
         squares[i].classList.add(walltype);
       } else if (layout[layoutnum][i] == 2) {
         squares[i].classList.add('ghost');
       } else if (layout[layoutnum][i] == 3) {
         squares[i].classList.add('pill');
+        foodCount++;
       } else if (layout[layoutnum][i] == 5 ) {
         squares[i].classList.add('pac');
         pacStart=i;
@@ -116,10 +146,10 @@ class ghost {
 }
 
 ghosts = [
-    new ghost('g1', 321, 125),
+    new ghost('g1', 321, 150),
     new ghost('g2', 349, 150),
     new ghost('g3', 322, 175),
-    new ghost('g4', 350, 100)
+    new ghost('g4', 350, 175)
 ]
 
 const moves =  [-1, +1, 28, -28]
@@ -153,13 +183,13 @@ function moveGhost(ghost) {
       if(ghost.scared && squares[ghost.current].classList.contains('pac')) {
         squares[ghost.current].classList.remove(ghost.name, 'ghost', 'scared-ghost');
         ghost.current = ghost.start;
-        if (levelCurrent <= 2) score += 50;
-        score += 50;
+        if (levelCurrent <= 2) score += 30;
+        score += 70;
         scoreD();
         squares[ghost.current].classList.add('ghost');
       }
-    checkForGameOver();
     checkForWin();
+    checkForGameOver();
     }, ghost.speed);
 }
 //movement of pacman
@@ -204,17 +234,18 @@ function movePacman(e) {
     squares[pacCurrent].classList.add('pac');
     foodEaten();
     pillEaten();
-    checkForGameOver();
     checkForWin();
+    checkForGameOver();
   }
 
 //eat a food
 function foodEaten() {
     if (squares[pacCurrent].classList.contains('food')) {
-	  if (levelCurrent <= 1) score++;
+	  if (layoutnum == 0) score++;
       score++;
       scoreD();
       squares[pacCurrent].classList.remove('food');
+      foodCount--;
     }
 }
 
@@ -223,10 +254,14 @@ function pillEaten() {
     if (squares[pacCurrent].classList.contains('pill')) {
       score +=10;
       scoreD();
-      ghosts.forEach(ghost => ghost.scared = true);
-      setTimeout( function() { ghosts.forEach(ghost => ghost.scared = false); flag = 0; }, 10000);
+      time = 0;
       flag = 1;
+      setTimeout( function(){ 
+		  ghosts.forEach(ghost => ghost.scared = true);
+		  time = 11;
+		  timer(time); }, 120 );
       squares[pacCurrent].classList.remove('pill');
+      foodCount--;
     }
 }
 
@@ -254,7 +289,7 @@ function checkForGameOver() {
 }
 
 function checkForWin() {
-    if (score >= 500) {
+    if (score >= 500 || foodCount == 0) {
 	  ghosts.forEach(ghost => clearInterval(ghost.ID));
       document.removeEventListener('keydown', movePacman);
       document.getElementById('something').classList.add('win'); 
@@ -262,24 +297,42 @@ function checkForWin() {
       flag = 1;
     }
 }
+function timer(o){
+	let timeDisplay = 10*o - 1;
+	let id = setInterval( function(){ 
+		if ( timeDisplay == 0 || time == 0) {
+			ghosts.forEach(ghost => ghost.scared = false); 
+			flag = 0;
+			time = 0;
+			clearInterval(id);}
+		document.getElementById('time').innerHTML = Math.floor(timeDisplay/10);
+		timeDisplay -= 1;
+		} , 100 );
+}
 function scoreD(){
 	document.getElementById('score').innerHTML = score;
 }
 function levelup(){
 	flag = 0;
+	foodCount = 0;
 	levelCurrent++;
 	level(document.getElementById('b1'));
 	document.getElementById('something').classList.remove('win'); 
 	score = 0;
+	scoreD();
+	if (lives < 5){ 
+		lives++; 
+		life(document.getElementById('b2')); }
 	ghosts.forEach(ghost => {
 			 squares[ghost.current].classList.remove(ghost.name, 'ghost', 'scared-ghost');
 			 ghost.scared = false;
-			 ghost.current = ghost.start; });
+			 ghost.current = ghost.start; 
+			 if ( ghost.speed > 120 ) ghost.speed -= 20; });
     removeBoard();
     wallnum = Math.floor(Math.random() * 3);
 	walltype = "wall" + wallnum;
     layoutnum++;
-	if(layoutnum == 3) layoutnum = 0;
+	if(layoutnum == 2) layoutnum = 0;
 	createBoard(layoutnum);
 	ghosts.forEach(ghost => {squares[ghost.start].classList.add(ghost.name,'ghost'); });
 	ghosts.forEach(ghost => {moveGhost(ghost)});
