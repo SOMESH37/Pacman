@@ -259,7 +259,7 @@ function pillEaten() {
       setTimeout( function(){ 
 		  ghosts.forEach(ghost => ghost.scared = true);
 		  time = 11;
-		  timer(time); }, 120 );
+		  timer(time); }, 12 );
       squares[pacCurrent].classList.remove('pill');
       foodCount--;
     }
@@ -293,21 +293,23 @@ function checkForWin() {
 	  ghosts.forEach(ghost => clearInterval(ghost.ID));
       document.removeEventListener('keydown', movePacman);
       document.getElementById('something').classList.add('win'); 
+      time = 0;
       setTimeout( levelup , 3000 );
       flag = 1;
     }
 }
 function timer(o){
-	let timeDisplay = 10*o - 1;
+	let timeDisplay = 100*o - 1;
 	let id = setInterval( function(){ 
 		if ( timeDisplay == 0 || time == 0) {
 			ghosts.forEach(ghost => ghost.scared = false); 
 			flag = 0;
 			time = 0;
+			document.getElementById('time').innerHTML = 0;
 			clearInterval(id);}
-		document.getElementById('time').innerHTML = Math.floor(timeDisplay/10);
+		document.getElementById('time').innerHTML = Math.floor(timeDisplay/100);
 		timeDisplay -= 1;
-		} , 100 );
+		} , 10 );
 }
 function scoreD(){
 	document.getElementById('score').innerHTML = score;
@@ -318,6 +320,7 @@ function levelup(){
 	levelCurrent++;
 	level(document.getElementById('b1'));
 	document.getElementById('something').classList.remove('win'); 
+	document.getElementById('time').innerHTML = 0;
 	score = 0;
 	scoreD();
 	if (lives < 5){ 
